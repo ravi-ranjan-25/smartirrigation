@@ -26,7 +26,7 @@ SECRET_KEY = 'id#axc4-(8d09$pl)=*+5^71612kb%ytfs!k!m78m#2uk$x=k9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['smirrigation.herokuapp.com','localhost']
+ALLOWED_HOSTS = ['smirrigation.herokuapp.com','localhost::8000']
 
 
 # Application definition

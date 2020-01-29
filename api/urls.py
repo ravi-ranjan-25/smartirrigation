@@ -15,8 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from api import views
+from rest_framework import routers
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/',include('api.urls')),
+# path('/user', , name = "userConsumptionN"),
+    # path('signup',views.signup , name = "signup"),
+    path('hardware/addgrid',views.addGridData , name = "addgrid"),
+    path('hardware/addfielddata',views.field , name = "addgrid"),
+    path('hardware/addweather',views.weatherData , name = "addgrid"),
+    path('hardware/gridstatus',views.gridCall , name = "addgrid"),
+
+    path('software/gridstatus',views.gridCallSoftware , name = "addgrid"),
+    path('software/show',views.show , name = "addgrid"),
+    path('software/signup',views.signup , name = "signup"),
+    path('software/login',views.login , name = "login"),
+
 ]
