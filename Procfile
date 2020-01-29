@@ -1,0 +1,1 @@
+web: gunicorn smartIrrigation.wsgi --log-file -
