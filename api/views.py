@@ -168,7 +168,7 @@ def login(request):
     if user1 is not None:
         house = userDetails.objects.get(user = user1)
         return JsonResponse({'result':1,'username':user1.username,'email':user1.email,'firstname':user1.first_name,
-                                'lastname':user1.last_name,'mobile':house.mobile})
+                                'lastname':user1.last_name,'mobile':house.mobile,'admin':house.admin})
     
     else:
         return JsonResponse({'result':0,'message':'Incorrect username or password'})
