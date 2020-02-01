@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from api import views
 from rest_framework import routers
-
+from .views import complainListView
 
 urlpatterns = [
 # path('/user', , name = "userConsumptionN"),
@@ -27,9 +27,14 @@ urlpatterns = [
     path('hardware/addweather',views.weatherData , name = "addgrid"),
     path('hardware/gridstatus',views.gridCall , name = "addgrid"),
 
+
+
     path('software/gridstatus',views.gridCallSoftware , name = "addgrid"),
     path('software/show',views.show , name = "addgrid"),
     path('software/signup',views.signup , name = "signup"),
     path('software/login',views.login , name = "login"),
+    path('software/addcomplain',views.complainss , name = "complains"),
+    path('software/resolvecomplain',views.resolveComplain , name = "login"),
+    path('software/showcomplains',complainListView.as_view() , name = "login"),
 
 ]

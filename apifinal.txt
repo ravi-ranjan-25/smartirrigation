@@ -1,0 +1,36 @@
+IMPORTANT Add data without " "
+--> For adding moisture data of grid 
+
+http://smirrigation.herokuapp.com/api/hardware/addgrid?g1=10.2&g2=99&g3=59&g4=40
+
+--> for sunlight and rainfall
+
+http://smirrigation.herokuapp.com/api/hardware/addfielddata?sunlight=10.4&rainfall=9
+
+--> for humidity and temperature
+
+http://smirrigation.herokuapp.com/api/hardware/addweather?humidity=10.4&temperature=9
+
+
+--> moisture of grid1/grid2/grid3/grid4
+http://smirrigation.herokuapp.com/api/hardware/gridstatus?grid=grid1
+
+
+-------------------SOFTWARE--------------------
+
+--> moisture of all grids and message
+
+http://smirrigation.herokuapp.com/api/software/gridstatus
+
+--> data for graph
+
+http://smirrigation.herokuapp.com/api/software/show
+
+-->signup
+
+http://smirrigation.herokuapp.com/api/software/signup?username=sharmalabham&email=labhamsharma5@gmail.com&firstname=Labham&lastname=Sharma&mobile=8274999562&password=maverick25&address="dum dum"
+
+-->login
+
+http://smirrigation.herokuapp.com/api/software/login?username=sharmalabham&password=maverick25
+

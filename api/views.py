@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from api.models import Grid,weather,fieldParameter,userDetails
+from api.models import Grid,weather,fieldParameter,userDetails,Complain
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.utils import timezone
 from django.http import JsonResponse
 import random
-# from .serializers import TaxSerializer
+from .serializers import complainSerializer
 from rest_framework.generics import ListAPIView
 from rest_framework import status
 from rest_framework.response import Response
@@ -98,6 +98,7 @@ def gridCallSoftware(request):
         else:
             list.append({g:{'moisture':x,'result':'Dry'}})
 
+    
     return JsonResponse({'result':list})
 
 
@@ -114,10 +115,10 @@ def show(request):
 
     for z in w:
         
-        list1.append(z.grid1)
-        list2.append(z.grid2)
-        list3.append(z.grid3)
-        list4.append(z.grid4)
+        list1.append({'data':z.grid1,'time':z.time})
+        list2.append({'data':z.grid2,'time':z.time})
+        list3.append({'data':z.grid3,'time':z.time})
+        list4.append({'data':z.grid4,'time':z.time})
 
     return JsonResponse({'grid1':list1,'grid2':list2,'grid3':list3,'grid4':list4})
                 
@@ -171,3 +172,39 @@ def login(request):
     
     else:
         return JsonResponse({'result':0,'message':'Incorrect username or password'})
+
+
+
+def complainss(request):
+    userName = request.GET.get('username')
+    complains = request.GET.get('complain')
+    complainid1 = request.GET.get('complainid')
+
+
+
+    user1 = User.objects.get(username=userName)
+
+    complaint = random.randint(100,999) + random.randint(9999,10000) + user1.pk
+    
+    complaint = "COMP25"+str(complaint)
+
+    print(complaint)
+    comp = Complain(complain = complains,complainid = complainid1,complaintxn = complaint )
+    comp.user = user1
+    comp.save()    
+
+    return JsonResponse({'result': 1})
+
+
+def resolveComplain(request):
+    get_id = request.GET.get('id')
+
+    comp = Complain.objects.get(pk=get_id)
+    comp.status = True
+
+    comp.save()
+    return JsonResponse({'result':1})  
+
+class complainListView(ListAPIView):
+    queryset = Complain.objects.all()
+    serializer_class = complainSerializer

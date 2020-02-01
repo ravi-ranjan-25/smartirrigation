@@ -31,4 +31,15 @@ class fieldParameter(models.Model):
     rainfall = models.FloatField(unique = False,max_length=256)
     time = models.DateTimeField(default = timezone.now())
 
-    
+
+class Complain(models.Model):
+    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    complaintxn = models.CharField(max_length=256,default = "COMP123")
+    complain = models.CharField(max_length=256)
+    time = models.DateTimeField(default = timezone.now())
+    complainid = models.CharField(max_length=256) 
+    status = models.BooleanField(default=0)
+    username = models.CharField(max_length=256,default="USER1")
+
+    def __str__(self):
+        return self.complain     
