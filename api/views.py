@@ -90,16 +90,17 @@ def gridCallSoftware(request):
         elif(g == 'grid4'):
             x = w.grid4
         
-        
+        pump = 0
         if(x>80 and x<100):
-            list.append({g:{'moisture':x,'result':'No water required'}})
+            list.append({g:{'moisture':x,'result':'No water required','valve':0}})
         elif(x<79 and x>50):
-            list.append({g:{'moisture':x,'result':'Moderate'}})
+            list.append({g:{'moisture':x,'result':'Moderate','valve':0}})
         else:
-            list.append({g:{'moisture':x,'result':'Dry'}})
+            pump = 1
+            list.append({g:{'moisture':x,'result':'Dry','valve':1}})
 
     
-    return JsonResponse({'result':list})
+    return JsonResponse({'result':list,'pumpStatuts':pump})
 
 
 def show(request):
