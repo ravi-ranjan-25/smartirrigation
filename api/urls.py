@@ -36,5 +36,7 @@ urlpatterns = [
     path('software/addcomplain',views.complainss , name = "complains"),
     path('software/resolvecomplain',views.resolveComplain , name = "login"),
     path('software/showcomplains',complainListView.as_view() , name = "login"),
+    path('software/showweathergraph',views.hmdty , name = "login"),
+    path('software/showrainfall',views.rain , name = "login"),
 
 ]

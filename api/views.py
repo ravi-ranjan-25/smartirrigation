@@ -42,8 +42,8 @@ def field(request):
 def weatherData(request):
     Sunlight = request.GET.get('humidity')
     Rainfall = request.GET.get('temperature')
-
-    w = weather(humidty=Sunlight,temperature=Rainfall)
+    Winds = request.GET.get('wind')
+    w = weather(humidty=Sunlight,temperature=Rainfall,wind=Winds)
     w.save()
 
     return JsonResponse({'result':1})
@@ -78,8 +78,9 @@ def gridCall(request):
 
 def gridCallSoftware(request):
     
-    
     w = Grid.objects.latest('time')
+    z = weather.objects.latest('time')
+    
 
     grid = ['grid1','grid2','grid3','grid4']
     list = []
@@ -103,8 +104,9 @@ def gridCallSoftware(request):
             pump = 1
             list.append({g:{'moisture':x,'result':'Dry','valve':1}})
 
-    
-    return JsonResponse({'result':list,'pumpStatuts':pump})
+    Weather = [{'humidity':z.humidty,'temperature':z.temperature,'wind':z.wind}]
+
+    return JsonResponse({'result':list,'pumpStatus':pump,'Weather':Weather})
 
 
 def show(request):
@@ -213,3 +215,40 @@ def resolveComplain(request):
 class complainListView(ListAPIView):
     queryset = Complain.objects.all()
     serializer_class = complainSerializer
+
+def hmdty(request):
+    
+    list1 = []
+    list2 = []
+    list3 = []
+    
+    # grid = ['grid1','grid2','grid3','grid4']
+
+    
+    w = weather.objects.all()
+
+    for z in w:
+        
+        list1.append({'data':z.humidty,'time':z.time})
+        list2.append({'data':z.temperature,'time':z.time})
+        list3.append({'data':z.wind,'time':z.time})
+        # list4.append({'data':z.grid4,'time':z.time})
+
+    return JsonResponse({'humidity':list1,'temperature':list2,'wind':list3})
+
+def rain(request):
+    
+    list1 = []
+    
+    # grid = ['grid1','grid2','grid3','grid4']
+
+    
+    w = fieldParameter.objects.all()
+
+    for z in w:
+        
+        list1.append({'data':z.rainfall,'time':z.time})
+        # list4.append({'data':z.grid4,'time':z.time})
+
+    return JsonResponse({'rainfall':list1})
+

@@ -6,3 +6,5 @@ http://localhost:8000/api/hardware/gridstatus?grid=grid1
 http://localhost:8000/api/software/gridstatus?grid=grid1
 http://localhost:8000/api/software/signup?username=sharmalabham&email=labhamsharma5@gmail.com&firstname=Labham&lastname=Sharma&mobile=8274999562&password=maverick25&address="dum dum"
 http://localhost:8000/api/software/login?username=sharmalabham&password=maverick25
+http://localhost:8000/api/software/showweathergraph
+http://localhost:8000/api/software/showrainfall

@@ -23,6 +23,7 @@ class Grid(models.Model):
 class weather(models.Model):
     humidty = models.FloatField(unique = False,max_length=256)
     temperature = models.FloatField(unique = False,max_length=256)
+    wind = models.FloatField(unique = False,max_length=256,default=0)
     time = models.DateTimeField(default = timezone.now())
 
     
