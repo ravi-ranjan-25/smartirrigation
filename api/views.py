@@ -84,6 +84,7 @@ def gridCallSoftware(request):
 
     grid = ['grid1','grid2','grid3','grid4']
     list = []
+    pump = 0
     for g in grid:
         x = 0
         if(g == 'grid1'):
@@ -95,7 +96,7 @@ def gridCallSoftware(request):
         elif(g == 'grid4'):
             x = w.grid4
         
-        pump = 0
+        
         if(x>80 and x<100):
             list.append({g:{'moisture':x,'result':'No water required','valve':0}})
         elif(x<79 and x>50):
