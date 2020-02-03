@@ -1,6 +1,6 @@
 http://localhost:8000/api/hardware/addgrid?g1=10.2&g2=99&g3=59&g4=40
 http://localhost:8000/api/hardware/addfielddata?sunlight=10.4&rainfall=9
-http://localhost:8000/api/hardware/addweather?humidity=10.4&temperature=9
+http://localhost:8000/api/hardware/addweather?humidity=10.4&temperature=9&wind=10.1
 http://localhost:8000/api/software/show
 http://localhost:8000/api/hardware/gridstatus?grid=grid1
 http://localhost:8000/api/software/gridstatus?grid=grid1
