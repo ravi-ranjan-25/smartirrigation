@@ -49,29 +49,32 @@ def weatherData(request):
     return JsonResponse({'result':1})
 
 def gridCall(request):
-    g = request.GET.get('grid')
+    # g = request.GET.get('grid')
     
-    
+    grid = ['grid1','grid2','grid3','grid4']
     w = Grid.objects.latest('time')
 
     x = 0
-
-    if(g == 'grid1'):
-        x = w.grid1
-    elif(g == 'grid2'):
-        x = w.grid2
-    elif(g == 'grid3'):
-        x = w.grid3
-    elif(g == 'grid4'):
-        x = w.grid4
+    for g in grid:
+        if(g == 'grid1'):
+            x = w.grid1
+        elif(g == 'grid2'):
+            x = w.grid2
+        elif(g == 'grid3'):
+            x = w.grid3
+        elif(g == 'grid4'):
+            x = w.grid4
         
 
-    if(x>50):
+        if(x>50):
+            g = 0
+            
+        else:
         
-        return JsonResponse({'result':0})
-    else:
-        
-        return JsonResponse({'result':1})
+            g = 1
+
+    return JsonResponse({'grid1':grid[0],'grid2':grid[1],'grid2':grid[3],'grid2':grid[3]})
+
 
 
 
