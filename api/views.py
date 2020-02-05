@@ -82,7 +82,7 @@ def gridCall(request):
 
 def gridCallSoftware(request):
     
-    w = Grid.objects.latest('time')
+    w = Grid.objects.filter('time')[0]
     z = weather.objects.latest('time')
     
 
