@@ -74,7 +74,7 @@ def gridCall(request):
             g = 1
             list.append(g)
 
-    return JsonResponse({'grid1':list[0],'grid2':list[1],'grid2':list[3],'grid2':list[3]})
+    return JsonResponse({'grid1':list[0],'grid2':list[1],'grid3':list[2],'grid4':list[3]})
 
 
 
