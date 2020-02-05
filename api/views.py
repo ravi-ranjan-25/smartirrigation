@@ -20,10 +20,10 @@ def addGridData(request):
     G2 = request.GET.get('g2')
     G3 = request.GET.get('g3')
     G4 = request.GET.get('g4')
-    G1 = 100-G1
-    G2 = 100-G2
-    G3 = 100-G3
-    G4 = 100-G4
+    G1 = 100-float(G1)
+    G2 = 100-float(G2)
+    G3 = 100-float(G3)
+    G4 = 100-float(G4)
 
     g = Grid(grid1=G1,grid2=G2,grid3=G3,grid4=G4,)
     g.save()
