@@ -53,7 +53,7 @@ def gridCall(request):
     
     grid = ['grid1','grid2','grid3','grid4']
     w = Grid.objects.latest('time')
-
+    list = []
     x = 0
     for g in grid:
         if(g == 'grid1'):
@@ -68,12 +68,13 @@ def gridCall(request):
 
         if(x>50):
             g = 0
-            
+            list.append(g)
         else:
         
             g = 1
+            list.append(g)
 
-    return JsonResponse({'grid1':grid[0],'grid2':grid[1],'grid2':grid[3],'grid2':grid[3]})
+    return JsonResponse({'grid1':list[0],'grid2':list[1],'grid2':list[3],'grid2':list[3]})
 
 
 
