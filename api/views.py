@@ -52,7 +52,7 @@ def gridCall(request):
     # g = request.GET.get('grid')
     
     grid = ['grid1','grid2','grid3','grid4']
-    w = Grid.objects.latest('time')
+    w = Grid.objects.order_by('-id')[0]
     list = []
     x = 0
     for g in grid:
